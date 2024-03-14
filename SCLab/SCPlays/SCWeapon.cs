@@ -143,11 +143,6 @@ namespace SCLab.SCPlays
 		public ushort Power;
 		public ushort PowerBonus;
 
-		public SCWeapon()
-		{
-
-		}
-
 		public SCWeapon(SCWeaponId id)
 		{
 			Id = id;

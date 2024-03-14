@@ -56,6 +56,7 @@ namespace SCLab.Chk
 							206 => SCFileFormatVersion.Remastered,
 							_ => SCFileFormatVersion.Unknown
 						};
+						chkFileInfo.WeaponSet = new SCWeaponSet(chkFileInfo.FileFormatVersion);
 						chkFileInfo.UpgradeSet = new SCUpgradeSet(chkFileInfo.FileFormatVersion);
 						chkFileInfo.TechSet = new SCTechSet(chkFileInfo.FileFormatVersion);
 						chkFileInfo.LocationSet = new SCLocationSet(chkFileInfo.FileFormatVersion);
@@ -440,8 +441,7 @@ namespace SCLab.Chk
 						}
 						break;
 
-					case "UNIS": // 왜 4048 바이트인지 확인필요
-						break;
+					case "UNIS":
 						int unisOffset = 0;
 						for (int i = 0; i < chkFileInfo.UnitSet.Units.Length; i++)
 						{
@@ -496,16 +496,16 @@ namespace SCLab.Chk
 							unit.StringNumber = chunkData.ToUShort(unisOffset);
 							unisOffset += 2;
 						}
-						for (int i = 0; i < chkFileInfo.UnitSet.Units.Length; i++)
+						for (int i = 0; i < chkFileInfo.WeaponSet.Weapons.Length; i++)
 						{
-							var unit = chkFileInfo.UnitSet.Units[i];
-							unit.BaseWeaponDamage = chunkData.ToUShort(unisOffset);
+							var weapon = chkFileInfo.WeaponSet.Weapons[i];
+							weapon.Power = chunkData.ToUShort(unisOffset);
 							unisOffset += 2;
 						}
-						for (int i = 0; i < chkFileInfo.UnitSet.Units.Length; i++)
+						for (int i = 0; i < chkFileInfo.WeaponSet.Weapons.Length; i++)
 						{
-							var unit = chkFileInfo.UnitSet.Units[i];
-							unit.BonusWeaponDamage = chunkData.ToUShort(unisOffset);
+							var weapon = chkFileInfo.WeaponSet.Weapons[i];
+							weapon.PowerBonus = chunkData.ToUShort(unisOffset);
 							unisOffset += 2;
 						}
 						break;

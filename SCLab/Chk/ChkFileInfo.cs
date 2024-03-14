@@ -28,6 +28,7 @@ namespace SCLab.Chk
 		public ushort[] RectangleTiles { get; set; } = [];
 		public ushort[] MapTiles { get; set; } = [];
 		public SCUnitSet UnitSet { get; set; } = new SCUnitSet();
+		public SCWeaponSet WeaponSet { get; set; } = default!;
 		public SCUpgradeSet UpgradeSet { get; set; } = default!;
 		public SCLocationSet LocationSet { get; set; } = default!;
 		public SCFogs[] Fogs { get; set; } = default!;

@@ -244,9 +244,7 @@ namespace SCLab.SCPlays
 		public ushort Mineral { get; set; }
 		public ushort Gas { get; set; }
 		public ushort StringNumber { get; set; }
-		public SCWeaponId WeaponId { get; set; }
-		public ushort BaseWeaponDamage { get; set; }
-		public ushort BonusWeaponDamage { get; set; }
+		public SCWeaponId[]? WeaponId { get; set; }
 
 		/// <summary>
 		/// 플레이어별 생산 제한
@@ -276,11 +274,6 @@ namespace SCLab.SCPlays
 		/// </summary>
 		public byte[] UseDefaults { get; set; } = new byte[12];
 
-		public SCUnit()
-		{
-
-		}
-
 		public SCUnit(SCUnitId id)
 		{
 			Id = id;
@@ -288,16 +281,16 @@ namespace SCLab.SCPlays
 			switch (id)
 			{
 				case SCUnitId.TerranMarine:
-					Init(40, 100, 0, 360, 50, 0, 0, SCWeaponId.GaussRifleNormal);
+					Init(40, 100, 0, 360, 50, 0, 0, [SCWeaponId.GaussRifleNormal]);
 					break;
 				case SCUnitId.TerranGhost:
-					Init(45, 100, 0, 750, 25, 75, 0, SCWeaponId.C10ConcussionRifleNormal);
+					Init(45, 100, 0, 750, 25, 75, 0, [SCWeaponId.C10ConcussionRifleNormal]);
 					break;
 				case SCUnitId.TerranVulture:
-					Init(80, 100, 0, 450, 75, 0, 0, SCWeaponId.FragmentationGrenadeNormal);
+					Init(80, 100, 0, 450, 75, 0, 0, [SCWeaponId.FragmentationGrenadeNormal]);
 					break;
 				case SCUnitId.TerranGoliath:
-					Init(125, 100, 1, 600, 100, 50, 0, SCWeaponId.TwinAutocannonsNormal);
+					Init(125, 100, 1, 600, 100, 50, 0, [SCWeaponId.TwinAutocannonsNormal]);
 					break;
 				case SCUnitId.GoliathTurret:
 					Init(0, 100, 0, 1, 1, 1, 0);
@@ -974,7 +967,7 @@ namespace SCLab.SCPlays
 			}
 		}
 
-		public void Init(uint hp, ushort shield, byte armor, ushort buildTime, ushort mineral, ushort gas, ushort stringNumber, SCWeaponId weaponID = SCWeaponId.None, ushort baseWeaponDamage = 0, ushort bonusWeaponDamage = 0)
+		public void Init(uint hp, ushort shield, byte armor, ushort buildTime, ushort mineral, ushort gas, ushort stringNumber, SCWeaponId[]? weaponID = null)
 		{
 			SettingRule = SCRuleSetting.Default;
 
@@ -987,8 +980,6 @@ namespace SCLab.SCPlays
 			StringNumber = stringNumber;
 
 			WeaponId = weaponID;
-			BaseWeaponDamage = baseWeaponDamage;
-			BonusWeaponDamage = bonusWeaponDamage;
 
 			Array.Fill<byte>(PlayerAvailables, 1);
 			GlobalAvailable = 1;

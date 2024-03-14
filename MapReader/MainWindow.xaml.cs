@@ -339,6 +339,60 @@ namespace MapReader
 					}
 					break;
 
+				case "UNIS":
+					int unisOffset = 0;
+					for (int i = 0; i < chkFileInfo.UnitSet.Units.Length; i++)
+					{
+						var unit = chkFileInfo.UnitSet.Units[i];
+						Info($"SettingRule[{i}]", $"{SCUnit.IdString[i]} 일반룰", unit.SettingRule.ToString());
+					}
+					for (int i = 0; i < chkFileInfo.UnitSet.Units.Length; i++)
+					{
+						var unit = chkFileInfo.UnitSet.Units[i];
+						Info($"Hp[{i}]", $"{SCUnit.IdString[i]} HP", unit.Hp.ToString());
+					}
+					for (int i = 0; i < chkFileInfo.UnitSet.Units.Length; i++)
+					{
+						var unit = chkFileInfo.UnitSet.Units[i];
+						Info($"Shield[{i}]", $"{SCUnit.IdString[i]} 쉴드", unit.Shield.ToString());
+					}
+					for (int i = 0; i < chkFileInfo.UnitSet.Units.Length; i++)
+					{
+						var unit = chkFileInfo.UnitSet.Units[i];
+						Info($"Armor[{i}]", $"{SCUnit.IdString[i]} 방어력", unit.Armor.ToString());
+					}
+					for (int i = 0; i < chkFileInfo.UnitSet.Units.Length; i++)
+					{
+						var unit = chkFileInfo.UnitSet.Units[i];
+						Info($"BuildTime[{i}]", $"{SCUnit.IdString[i]} 건설시간", unit.BuildTime.ToString());
+					}
+					for (int i = 0; i < chkFileInfo.UnitSet.Units.Length; i++)
+					{
+						var unit = chkFileInfo.UnitSet.Units[i];
+						Info($"Mineral[{i}]", $"{SCUnit.IdString[i]} 미네랄", unit.Mineral.ToString());
+					}
+					for (int i = 0; i < chkFileInfo.UnitSet.Units.Length; i++)
+					{
+						var unit = chkFileInfo.UnitSet.Units[i];
+						Info($"Gas[{i}]", $"{SCUnit.IdString[i]} 가스", unit.Gas.ToString());
+					}
+					for (int i = 0; i < chkFileInfo.UnitSet.Units.Length; i++)
+					{
+						var unit = chkFileInfo.UnitSet.Units[i];
+						Info($"StringNumber[{i}]", $"{SCUnit.IdString[i]} 스트링#", unit.StringNumber.ToString());
+					}
+					for (int i = 0; i < chkFileInfo.WeaponSet.Weapons.Length; i++)
+					{
+						var weapon = chkFileInfo.WeaponSet.Weapons[i];
+						Info($"Power[{i}]", $"{SCWeapon.IdString[i]} 공격력", weapon.Power.ToString());
+					}
+					for (int i = 0; i < chkFileInfo.WeaponSet.Weapons.Length; i++)
+					{
+						var weapon = chkFileInfo.WeaponSet.Weapons[i];
+						Info($"PowerBonus[{i}]", $"{SCWeapon.IdString[i]} 공격력+", weapon.PowerBonus.ToString());
+					}
+					break;
+
 				case "UPGS":
 					for (int i = 0; i < chkFileInfo.UpgradeSet.Upgrades.Length; i++)
 					{
